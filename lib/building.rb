@@ -10,4 +10,14 @@ class Building
   def add_unit(unit)
     @units << unit
   end
+
+  def renters
+    name_array = []
+    @units.each do |unit|
+      if unit.renter != nil
+        name_array << unit.renter.name
+      end
+    end
+    name_array
+  end
 end
