@@ -40,4 +40,22 @@ class Building
     end
     most_expensive.renter
   end
+
+  def bedroom_keys
+    @units.map do |unit|
+      unit.bedrooms
+    end.uniq
+  end
+
+  def units_by_number_of_bedrooms
+    by_bedroom_hash = Hash[self.bedroom_keys.collect {|item| [item, []]}]
+    by_bedroom_hash.each do |bedrooms, units|
+      @units.each do |unit|
+        if unit.bedrooms == bedrooms
+          by_bedroom_hash[bedrooms] << unit.number
+        end
+      end
+    end
+    by_bedroom_hash
+  end
 end
