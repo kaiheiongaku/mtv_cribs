@@ -20,4 +20,11 @@ class Building
     end
     name_array
   end
+
+  def average_rent
+    total_building_rent = @units.map do |unit|
+      unit.monthly_rent.to_f
+    end.sum
+    (total_building_rent / @units.count).round(1)
+  end
 end
