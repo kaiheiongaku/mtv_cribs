@@ -27,4 +27,10 @@ class Building
     end.sum
     (total_building_rent / @units.count).round(1)
   end
+
+  def rented_units
+    @units.find_all do |unit|
+      unit.renter != nil
+    end
+  end
 end
